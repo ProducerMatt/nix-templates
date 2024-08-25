@@ -23,6 +23,9 @@
     flake-utils.lib.eachDefaultSystem
     (
       system: let
+        # NOTE: change to true to enable commit checks
+        enablePreCommitChecks = false;
+
         pkgs = nixpkgs.legacyPackages.${system};
 
         inherit (pkgs) lib;
@@ -146,7 +149,7 @@
 
               pkgs.nixd
             ]
-            ++ pc-hooks.enabledPackages
+            ++ lib.optionals enablePreCommitChecks pc-hooks.enabledPackages
             ++ systemPackages;
 
           # define shell startup command
@@ -168,9 +171,7 @@
 
             # enables history for IEx
             export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_path '\"$PWD/.erlang-history\"'"
-
-            ${pc-hooks.shellHook}
-          '';
+          '' ++ lib.optionalString enablePreCommitChecks pc-hooks.shellHook;
           # for Python add:
           # export FLAKE_PYTHON="${python}/bin/python3"
         in
