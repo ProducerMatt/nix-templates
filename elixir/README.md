@@ -11,7 +11,10 @@ $ nix develop
 
 $ mix --version
 ```
-## Phoenix
+
+In flake.nix you can change `enablePreCommitChecks` to true, which will start the repo using [`git-hooks.nix`](https://github.com/cachix/git-hooks.nix)
+
+## Elixir and/or Phoenix
 
 This flake doesn't provide any starter app code, if you want to
 spin a new app up you can install the latest code like so:
@@ -24,12 +27,14 @@ $ mix phx.new app
 ```bash
 # Elixir template
 # plain module
+$ mix new module_name
+# plain module in this directory. Note camel-case
 $ mix new ./ --module ModuleName
 # mod with supervisor
-$ mix new ./ --module ModuleName --sup
+$ mix new module_name --sup
 # umbrella app
-$ mix new ./ --module ModuleName --umbrella
-$ cd apps
+$ mix new umbrella_app --umbrella
+$ cd umbrella_app/apps
 $ mix new child_app
 ```
 
