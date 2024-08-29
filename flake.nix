@@ -16,6 +16,9 @@
           path = ./elixir;
           welcomeText = builtins.readFile ./elixir/README.md;
         };
+        hooked = {
+          path = ./hooked;
+        };
       };
   };
 }
