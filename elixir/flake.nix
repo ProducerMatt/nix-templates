@@ -173,7 +173,7 @@
               # enables history for IEx
               export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_path '\"$PWD/.erlang-history\"'"
             ''
-            ++ lib.optionalString enablePreCommitChecks pc-hooks.shellHook;
+            + lib.optionalString enablePreCommitChecks pc-hooks.shellHook;
           # for Python add:
           # export FLAKE_PYTHON="${python}/bin/python3"
         in

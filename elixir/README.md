@@ -39,5 +39,4 @@ $ mix new child_app
 ```
 
 To get started, check out the newly generated README.md in the app directory.
-This flake provides a docker-compose file to spin up the local postgres instance
-required for getting started.
+This flake includes a docker-compose file for Pheonix's Postgres.
