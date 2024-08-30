@@ -41,6 +41,7 @@
         config,
         pkgs,
         system,
+        rust-overlay,
         ...
       }: let
         # NOTE: change to false to disable commit checks
