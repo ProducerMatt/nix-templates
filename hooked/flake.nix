@@ -21,7 +21,8 @@
   } @ inputs:
     flake-parts.lib.mkFlake {
       inherit inputs;
-    } ({withSystem, ...}: {
+      # } ({withSystem, ...}: {
+    } ({...}: {
       debug = true; # DEBUG
 
       imports = [
@@ -32,7 +33,7 @@
       ];
       systems = import systems;
       perSystem = {
-        config,
+        # config,
         pkgs,
         system,
         ...

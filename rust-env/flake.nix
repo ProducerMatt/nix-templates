@@ -27,7 +27,8 @@
   } @ inputs:
     flake-parts.lib.mkFlake {
       inherit inputs;
-    } ({withSystem, ...}: {
+      # } ({withSystem, ...}: {
+    } ({...}: {
       debug = true; # DEBUG
 
       imports = [
@@ -38,10 +39,9 @@
       ];
       systems = import systems;
       perSystem = {
-        config,
+        # config,
         pkgs,
         system,
-        rust-overlay,
         ...
       }: let
         # NOTE: change to false to disable commit checks
