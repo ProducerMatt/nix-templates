@@ -19,6 +19,9 @@
         hooked = {
           path = ./hooked;
         };
+        rust-env = {
+          path = ./rust-env;
+        };
       };
   };
 }
