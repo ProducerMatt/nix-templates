@@ -18,7 +18,7 @@
     flake-parts,
     git-hooks,
     ...
-  }@inputs:
+  } @ inputs:
     flake-parts.lib.mkFlake {
       inherit inputs;
     } ({withSystem, ...}: {
@@ -97,8 +97,8 @@
         devShells.default = let
           #####################
           # DEV SHELL WITH PRE-PUSH HOOKS
-          inputs =
-            with pkgs; [
+          inputs = with pkgs;
+            [
               nixd
             ]
             ++ pc-hooks.enabledPackages
@@ -115,6 +115,6 @@
             buildInputs = inputs;
             shellHook = sh-hook;
           };
-  };
-  });
+      };
+    });
 }

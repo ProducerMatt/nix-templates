@@ -154,24 +154,26 @@
 
           # define shell startup command
 
-          sh-hook = ''
-            # this allows mix to work on the local directory
-            mkdir -p .nix-mix
-            mkdir -p .nix-hex
+          sh-hook =
+            ''
+              # this allows mix to work on the local directory
+              mkdir -p .nix-mix
+              mkdir -p .nix-hex
 
-            export MIX_HOME=$PWD/.nix-mix
-            export HEX_HOME=$PWD/.nix-hex
-            export ERL_LIBS=$HEX_HOME/lib/erlang/lib
+              export MIX_HOME=$PWD/.nix-mix
+              export HEX_HOME=$PWD/.nix-hex
+              export ERL_LIBS=$HEX_HOME/lib/erlang/lib
 
-            export PATH=$MIX_HOME/bin:$PATH
-            export PATH=$MIX_HOME/escripts:$PATH
-            export PATH=$HEX_HOME/bin:$PATH
+              export PATH=$MIX_HOME/bin:$PATH
+              export PATH=$MIX_HOME/escripts:$PATH
+              export PATH=$HEX_HOME/bin:$PATH
 
-            export LANG=en_US.UTF-8
+              export LANG=en_US.UTF-8
 
-            # enables history for IEx
-            export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_path '\"$PWD/.erlang-history\"'"
-          '' ++ lib.optionalString enablePreCommitChecks pc-hooks.shellHook;
+              # enables history for IEx
+              export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_path '\"$PWD/.erlang-history\"'"
+            ''
+            ++ lib.optionalString enablePreCommitChecks pc-hooks.shellHook;
           # for Python add:
           # export FLAKE_PYTHON="${python}/bin/python3"
         in
