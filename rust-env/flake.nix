@@ -53,6 +53,16 @@
           overlays = [(import rust-overlay)];
         };
 
+        rustVersion = "latest";
+        #rustVersion = "1.62.0";
+        rust = pkgs.rust-bin.stable.${rustVersion}.default.override {
+          extensions = [
+            "rust-src" # for rust-analyzer
+            "rust-analyzer"
+          ];
+        };
+        RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+
         inherit (pkgs) lib;
 
         systemPackages =
@@ -116,11 +126,7 @@
           inputs = with pkgs;
             [
               # rust packages
-              cargo
-              rustc
-              rustfmt
-              rustPackages.clippy
-              pre-commit
+              rust
 
               nixd
             ]
@@ -137,6 +143,9 @@
           pkgs.mkShell {
             buildInputs = inputs;
             shellHook = sh-hook;
+
+            inherit RUST_SRC_PATH;
+            RUST_BACKTRACE = 1;
           };
       };
     });
