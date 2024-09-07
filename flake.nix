@@ -6,7 +6,7 @@
   };
 
   outputs = {
-    self,
+    # self,
     templates,
   }: {
     templates =
@@ -15,6 +15,9 @@
         elixir = {
           path = ./elixir;
           welcomeText = builtins.readFile ./elixir/README.md;
+        };
+        gleam = {
+          path = ./gleam;
         };
         hooked = {
           path = ./hooked;
