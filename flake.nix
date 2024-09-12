@@ -8,6 +8,7 @@
   outputs = {
     # self,
     templates,
+    ...
   }: {
     templates =
       templates.outputs.templates
